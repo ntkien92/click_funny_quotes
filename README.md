@@ -6,13 +6,14 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
-
+[x] Ruby 2.3.1
+[x] Rails 5.0.0
 * System dependencies
 
 * Configuration
 
 * Database creation
-
+[x] Postgres
 * Database initialization
 
 * How to run the test suite
