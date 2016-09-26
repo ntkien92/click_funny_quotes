@@ -13,4 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require user/move-top.js
+//= require user/easing.js
+//= require user/modernizr.custom.97074.js
+//= require user/jquery.chocolat.js
+//= require user/jquery.flexisel.js
+//= require user/jquery.hoverdir.js
+//= require user/custom.js
 //= require_tree .

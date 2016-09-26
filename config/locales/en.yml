@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  header:
+    home: Home
+    gallery: Gallery

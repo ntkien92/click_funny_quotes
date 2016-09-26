@@ -1,0 +1,42 @@
+/ - if controller_name == 'homes'
+  .header-top
+    .container
+      .head-main
+        = link_to root_path
+          = image_tag 'logo-1.png'
+.header
+  .container
+    .head
+      .navigation
+        span.menu
+        ul.navig
+          li
+            = link_to t('header.home'), root_path, class: 'active'
+          li
+            a[href="#"]
+              | About
+          li
+            = link_to t('header.gallery'), root_path
+          li
+            = link_to t('header.contact'), root_path
+      .header-right
+        .search-bar
+          input[type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"]
+          input[type="submit" value=""]
+        ul
+          li
+            a[href="https://www.facebook.com/nguyentrungkienkbang"]
+              span.fb
+          li
+            a[href="#"]
+              span.twit
+          li
+            a[href="#"]
+              span.pin
+          li
+            a[href="#"]
+              span.rss
+          li
+            a[href="#"]
+              span.drbl
+      .clearfix
