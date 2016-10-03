@@ -4,3 +4,89 @@
 .category {
   padding: 5em 0;
 }
+.quotes {
+  position: relative;
+  img {
+    width: 100%;
+  }
+  .avatar {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 150px;
+    height: 150px;
+  }
+  .name {
+    position: absolute;
+    top: 5%;
+    left: 30%;
+    color: yellow;
+    font-size: 30px;
+  }
+  .title {
+    width: 270px;
+    color: red;
+    font-size: 20px;
+    position: absolute;
+    top: 70px;
+    left: 212px;
+  }
+  .other_avatar {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    width: 150px;
+    height: 150px;
+  }
+  .description {
+    width: 300px;
+    margin: 0 auto;
+    font-size: 20px;
+    position: absolute;
+    top: 230px;
+    left: 60px;
+    color: #ff0066;
+  }
+}
+.layout_1 {
+  position: relative;
+  img {
+    width: 100%;
+  }
+  .avatar_left {
+    position: absolute;
+    top: 5%;
+    left: 40px;
+    width: 150px;
+    height: 150px;
+  }
+  .avatar_right {
+    position: absolute;
+    top: 5%;
+    right: 40px;
+    width: 150px;
+    height: 150px;
+  }
+  .avatar_bottom {
+    position: absolute;
+    top: 230px;
+    right: 250px;
+    width: 150px;
+    height: 150px;
+  }
+  .text_title {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    color: yellow;
+  }
+  .description {
+    position: absolute;
+    top: 70px;
+    left: 206px;
+    width: 260px;
+    color: red;
+    text-align: justify;
+    font-size: 18px;
+  }
+}

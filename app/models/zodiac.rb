@@ -33,7 +33,8 @@ class Zodiac
 
 	# == Initialize Method
 	def initialize(attributes = {})
-	   @birthday = Date.strptime(attributes[:birthday], "%m/%d/%Y") # facebook birthday format
+	   # facebook birthday format
+	   @birthday = attributes[:birthday].present? ? Date.strptime(attributes[:birthday], "%m/%d/%Y") : DateTime.new(1992, 5, 31)
 	   @gender = attributes[:gender]
 	end
 

@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160930171305) do
   create_table "layouts", force: :cascade do |t|
     t.string "name"
     t.string "demo_url"
-    t.string "layer"
+    t.text   "layer"
   end
 
   create_table "quotes", force: :cascade do |t|
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160930171305) do
     t.string   "facebook_fields"
     t.integer  "category_id"
     t.integer  "layout_id"
+    t.string   "language"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
