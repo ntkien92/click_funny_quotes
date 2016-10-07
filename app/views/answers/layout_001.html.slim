@@ -1,0 +1,20 @@
+.single
+  .container
+    .row
+      .col-md-7.pull-left.layout_1
+        = image_tag('http://www.planwallpaper.com/static/images/recycled_texture_background_by_sandeep_m-d6aeau9_PZ9chud.jpg')
+        .description
+          = @result[:content]
+        .avatar_left
+          = image_tag(@result[:l_picture])
+          .text_title
+            = @result[:l_text]
+        .avatar_right
+          = image_tag(@result[:r_picture])
+          .text_title
+            = @result[:r_text]
+        .avatar_bottom
+          = image_tag(@result[:avatar])
+          .text_title
+            = @result[:username]
+

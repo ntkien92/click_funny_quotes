@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    params[:quote_id] = 1
+    params[:quote_id] = Quote.first.id
     quote = Quote.find(params[:quote_id])
 
     oauth_access_token =  env["omniauth.auth"].credentials.token
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     p @result
 
     # @graph.put_connections("me", "feed", message: "I am writing on my wall!")
-    render "answers/index"
+    render "answers/" + @result[:layout]
   end
 
 end
