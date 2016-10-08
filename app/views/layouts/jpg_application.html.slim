@@ -1,0 +1,11 @@
+doctype html
+html
+  head 
+    title
+      | CmsRails
+    meta charset="utf-8"
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  body
+    #fb-root
+    = yield
