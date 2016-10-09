@@ -70,9 +70,14 @@
   .avatar_bottom {
     position: absolute;
     top: 230px;
-    right: 250px;
-    width: 150px;
-    height: 150px;
+    width: 100%;
+
+    img {
+      height: 150px;
+      width: 150px;
+      margin: 0 auto;
+      display: block;
+    }
   }
   .text_title {
     width: 100%;
