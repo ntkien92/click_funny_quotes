@@ -1,0 +1,24 @@
+/ Layout 3
+.single
+  .container
+    .row
+      .pull-left.layout_3
+        .back_ground.bg_red
+        .top_title.bg_title_red.color_green
+          | Test
+        .show_info
+          .w33.show_info_content
+            .number.color_red
+              | 3000
+            .text_description.color_yellow
+              | Muon lam ban voi ban
+          .w33
+            = image_tag('https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/p160x160/14233043_1506152816077227_2689228605250035986_n.jpg?oh=6b02b48c46eea95196b890b713abaa00&oe=58755D22&__gda__=1487219764_ea8dfdb9f1e18f6e2fc2fbc77dbb2387')
+          .w33.show_info_content
+            .number.color_red
+              | 20
+            .text_description.color_yellow
+              | Muon lam ban voi ban
+.fb-share-button[data-href="#{request.original_url}" data-layout="button_count" data-size="small" data-mobile-iframe="true"]
+  a.fb-xfbml-parse-ignore[target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse"]
+    | Share
