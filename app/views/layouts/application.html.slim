@@ -1,10 +1,8 @@
 doctype html
 html
   head
-    title
-      | CmsRails
     meta charset="utf-8"
-
+    = display_meta_tags
     meta property="og:image" content="http://s.blobla.com/data/img/20160909/62105ffb9ed041729f16cda39731b1ac/b97a00ea28c74882ba658ccb9ec2f096.jpg"
     meta property="og:image:width" content="720"
     meta property="og:image:height" content="378"
@@ -18,5 +16,12 @@ html
     script
       | window.twttr = (function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {}; if (d.getElementById(id)) return t; js = d.createElement(s); js.id = id; js.src = "https://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); t._e = []; t.ready = function(f) { t._e.push(f); }; return t; }(document, "script", "twitter-wjs"));
     = render 'shared/header'
-    = yield
+    .content
+      .quote
+        = yield
+        .fb-share-button[data-href="#{request.original_url}" data-layout="button_count" data-size="large" data-mobile-iframe="true"]
+          a.fb-xfbml-parse-ignore[target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=#{request.original_url}"]
+            | Share
+        .fb-comments[data-href="#{request.original_url}" data-width="640" data-numposts="10"]
+    .clearfix
     = render 'shared/footer'

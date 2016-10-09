@@ -1,20 +1,18 @@
-.single
-  .container
-    .row
-      .col-md-7.pull-left.layout_1
-        = image_tag('http://tophinhanhdep.net/wp-content/uploads/2016/01/hinh-anh-pikachu-6.jpg')
-        .description
-          = @result[:content]
-        .avatar_left
-          = image_tag(@result[:l_picture])
-          .text_title
-            = @result[:l_text]
-        .avatar_right
-          = image_tag(@result[:r_picture])
-          .text_title
-            = @result[:r_text]
-        .avatar_bottom
-          = image_tag(@result[:avatar])
-          .text_title
-            = @result[:username]
+.content
+  .quote.layout_1
+    = image_tag('https://images.freecreatives.com/wp-content/uploads/2016/02/Abstract-Background-with-Blue-Waves-For-Free1.jpg')
+    .description
+      = @result[:content]
+    .avatar_left
+      = image_tag(@result[:l_picture])
+      .text_title
+        = @result[:l_text]
+    .avatar_right
+      = image_tag(@result[:r_picture])
+      .text_title
+        = @result[:r_text]
+    .avatar_bottom
+      = image_tag(@result[:avatar])
+      .text_title
+        = @result[:username]
 

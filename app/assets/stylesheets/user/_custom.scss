@@ -4,6 +4,16 @@
 .category {
   padding: 5em 0;
 }
+.content {
+  width: 1170px;
+  margin: 0 auto;
+  padding: 0;
+  .quote {
+    width: 640px;
+    float: left;
+    display: inline-block;
+  }
+}
 .quotes {
   position: relative;
   img {
@@ -56,20 +66,20 @@
   .avatar_left {
     position: absolute;
     top: 5%;
-    left: 40px;
+    left: 25px;
     width: 150px;
     height: 150px;
   }
   .avatar_right {
     position: absolute;
     top: 5%;
-    right: 40px;
+    right: 25px;
     width: 150px;
     height: 150px;
   }
   .avatar_bottom {
     position: absolute;
-    top: 230px;
+    top: 210px;
     width: 100%;
 
     img {
@@ -87,8 +97,8 @@
   }
   .description {
     position: absolute;
-    top: 70px;
-    left: 206px;
+    top: 60px;
+    left: 190px;
     width: 260px;
     color: red;
     text-align: justify;
