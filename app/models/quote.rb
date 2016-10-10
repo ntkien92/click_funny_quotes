@@ -2,6 +2,7 @@ class Quote < ApplicationRecord
 
   # == Model relationships
   belongs_to :main_quote
+  has_many :answers
 
   # == Instance methods
   def get_answer(koala_user)
@@ -9,6 +10,16 @@ class Quote < ApplicationRecord
     profile = koala_user.get_object("me" + query_str)
 
     answer_hash = Answer.send(main_quote.algorithm, profile, id)
-    answer_hash.merge!(layout: main_quote.layout.name)
+    answer_hash.merge!(Quote.common_attrs(profile, main_quote))
+  end
+
+  private
+
+  def self.common_attrs(profile, main_quote)
+    {
+      :username => profile['name'],
+      :avatar => profile['picture']['data']['url'],
+      :layout => main_quote.layout.name
+    }
   end
 end

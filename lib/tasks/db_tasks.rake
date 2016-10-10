@@ -1,7 +1,13 @@
+require 'roo'
+
 namespace :db_tasks do
   desc "create quote/answers data"
   task create_data: :environment do
     create_data
+  end
+
+  task import_data: :environment do
+    import_data
   end
 
   def create_data
@@ -34,6 +40,33 @@ namespace :db_tasks do
       end
     end
 
+  end
+
+  def import_data
+    xlsx = Roo::Excelx.new("#{Rails.root}/lib/files/import_data.xlsx")
+
+    #== Pokemon ==
+
+    c = Category.find_or_create_by(name: "Pokemon", en_content: "Pokemon", vn_content: "Pokemon")
+    l = Layout.find_or_create_by(name: "layout_002")
+    mq = MainQuote.find_or_create_by(name: "Pokemon Friend", algorithm: "random_answer",
+                      facebook_fields: "name,picture",
+                      category_id: c.id, layout_id: l.id)
+    q = Quote.find_or_initialize_by(title: "Pokemon nào sẽ đồng hành với bạn hôm nay?", language: "vn", main_quote_id: mq.id)
+    if (q.new_record?)
+      q.save!
+
+      name_lb = 'A'
+      image_lb = 'B'
+      pokemon_sheet = xlsx.sheet('Pokemon')
+
+      for i in pokemon_sheet.first_row + 1..pokemon_sheet.last_row do
+        name = pokemon_sheet.cell(i, name_lb)
+        image = "http://" + pokemon_sheet.cell(i, image_lb)
+        r = Resource.find_or_create_by(name: name, data: image)
+        Answer.create!(alias: name, quote_id: q.id, resource_id: r.id)
+      end
+    end
   end
 
 end
