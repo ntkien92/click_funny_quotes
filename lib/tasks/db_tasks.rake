@@ -48,10 +48,10 @@ namespace :db_tasks do
     #== Pokemon ==
 
     c = Category.find_or_create_by(name: "Pokemon", en_content: "Pokemon", vn_content: "Pokemon")
-    l = Layout.find_or_create_by(name: "layout_002")
+    l2 = Layout.find_or_create_by(name: "layout_002")
     mq = MainQuote.find_or_create_by(name: "Pokemon Friend", algorithm: "random_answer",
                       facebook_fields: "name,picture",
-                      category_id: c.id, layout_id: l.id)
+                      category_id: c.id, layout_id: l2.id)
     q = Quote.find_or_initialize_by(title: "Pokemon nào sẽ đồng hành với bạn hôm nay?", language: "vn", main_quote_id: mq.id)
     if (q.new_record?)
       q.save!
@@ -67,6 +67,27 @@ namespace :db_tasks do
         Answer.create!(alias: name, quote_id: q.id, resource_id: r.id)
       end
     end
+
+    #== Friends ==
+    c = Category.find_or_create_by(name: "Friend", en_content: "Friend", vn_content: "Bạn bè")
+    mq = MainQuote.find_or_create_by(name: "Friend", algorithm: "random_friend",
+                      facebook_fields: "friends?name,picture",
+                      category_id: c.id, layout_id: l2.id)
+    friends_sheet = xlsx.sheet('Friends')
+    title_lb = 'A'
+    language_lb = 'B'
+    answer_lb = 'C'
+    for i in friends_sheet.first_row + 1..friends_sheet.last_row do
+      title = friends_sheet.cell(i, title_lb)
+      language = friends_sheet.cell(i, language_lb)
+      answer = friends_sheet.cell(i, answer_lb)
+      q = Quote.find_or_initialize_by(title: title, language: language, main_quote_id: mq.id)
+      if (q.new_record?)
+        q.save!
+        Answer.create!(contents: [answer], quote_id: q.id)
+      end
+    end
+
   end
 
 end

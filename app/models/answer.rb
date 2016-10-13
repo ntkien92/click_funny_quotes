@@ -1,10 +1,10 @@
 class Answer < ApplicationRecord
 
   # == Constants
-  IxName = 0
+  IxName = IxContent = 0
 
   # == Model relationships
-  belongs_to :resource
+  belongs_to :resource, optional: true
   belongs_to :quote
 
   # == Public methods
@@ -31,6 +31,17 @@ class Answer < ApplicationRecord
     {
       :r_picture => ranswer.picture,
       :r_text => ranswer.alias
+    }
+  end
+
+  def self.random_friend(friends, quote_id)
+    friend = friends.sample
+    ranswer = Answer.find_by(quote_id: quote_id)
+    content = ranswer.contents[IxContent].gsub("$RTEXT$", friend['name'])
+    {
+      :r_picture => friend['picture']['data']['url'],
+      :r_text => friend['name'],
+      :content => content
     }
   end
 

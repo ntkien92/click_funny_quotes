@@ -6,10 +6,22 @@ class Quote < ApplicationRecord
 
   # == Instance methods
   def get_answer(koala_user)
-    query_str = main_quote.facebook_fields.present? ? ("?fields=" + main_quote.facebook_fields.gsub("picture", "picture.type(large)")) : ""
-    profile = koala_user.get_object("me" + query_str)
 
-    answer_hash = Answer.send(main_quote.algorithm, profile, id)
+    fields = main_quote.facebook_fields
+
+    if fields.exclude? "friends"
+      query_str = Field::replace_userfield(fields)
+      profile = koala_user.get_object("me" + query_str)
+      answer_hash = Answer.send(main_quote.algorithm, profile, id)
+    else
+      friend_query_str = Field::replace_friendfield(fields)
+      query_str = friend_query_str.gsub("taggable_friends", "")
+
+      friends = koala_user.get_connections("me", friend_query_str)
+      profile = koala_user.get_object("me" + query_str)
+      answer_hash = Answer.send(main_quote.algorithm, friends, id)
+    end
+
     answer_hash.merge!(Quote.common_attrs(profile, main_quote))
   end
 
