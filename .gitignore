@@ -13,6 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 .rvmrc
+/config/secrets.yml
 config/initializers/facebook_app_id.rb
 config/initializers/account_s3.rb
 config/initializers/env_vars.rb
