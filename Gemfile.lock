@@ -70,6 +70,8 @@ GEM
     ffi (1.9.14)
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
+    friendly_id (5.2.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashie (3.4.6)
@@ -245,6 +247,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   font-awesome-rails
+  friendly_id
   imgkit
   jbuilder (~> 2.5)
   jquery-rails
@@ -270,4 +273,4 @@ DEPENDENCIES
   wkhtmltoimage-binary
 
 BUNDLED WITH
-   1.13.1
+   1.13.6

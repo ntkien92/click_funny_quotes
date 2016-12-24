@@ -46,6 +46,8 @@ gem 'meta-tags'
 
 gem 'roo', '~> 2.4.0'
 
+gem 'friendly_id'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

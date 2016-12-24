@@ -10,55 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004132747) do
+ActiveRecord::Schema.define(version: 20161224082306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.string   "alias"
-    t.text     "contents",   default: [],              array: true
-    t.integer  "quote_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string  "alias"
+    t.integer "resource_id"
+    t.integer "quote_id"
+    t.jsonb   "contents",    default: {}
     t.index ["alias", "quote_id"], name: "index_answers_on_alias_and_quote_id", unique: true, using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.string "en_content"
+    t.string "vn_content"
     t.index ["name"], name: "index_categories_on_name", unique: true, using: :btree
   end
 
   create_table "layouts", force: :cascade do |t|
     t.string "name"
     t.string "demo_url"
-    t.text   "layer"
     t.index ["name"], name: "index_layouts_on_name", unique: true, using: :btree
   end
 
   create_table "main_quotes", force: :cascade do |t|
     t.string  "name"
-    t.string  "background_id"
-    t.string  "background2_id"
     t.string  "algorithm"
     t.string  "facebook_fields"
     t.integer "category_id"
     t.integer "layout_id"
+    t.string  "color",           default: [], array: true
+    t.integer "background_url",  default: [], array: true
     t.index ["name"], name: "index_main_quotes_on_name", unique: true, using: :btree
   end
 
   create_table "quotes", force: :cascade do |t|
-    t.string   "name"
-    t.string   "background"
-    t.string   "background2"
+    t.string   "title"
     t.string   "description"
-    t.string   "algorithm"
-    t.string   "facebook_fields"
-    t.integer  "category_id"
-    t.integer  "layout_id"
     t.string   "language"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "main_quote_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "slug"
   end
 
   create_table "resources", force: :cascade do |t|

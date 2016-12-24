@@ -1,4 +1,6 @@
 class Quote < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   # == Model relationships
   belongs_to :main_quote
@@ -23,6 +25,10 @@ class Quote < ApplicationRecord
     end
 
     answer_hash.merge!(Quote.common_attrs(profile, main_quote))
+  end
+
+  def normalize_friendly_id(slug_key)
+    slug_key.convert_vi_to_en.parameterize
   end
 
   private
